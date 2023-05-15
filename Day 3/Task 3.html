@@ -1,0 +1,41 @@
+<!-- // 3.	Use the same rest countries and print all countries names, regions, sub-region and populations -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All the countries naems, regions, sub-region and populations</title>
+</head>
+<body>
+    <h1>Use the same rest countries and print all countries names, regions, sub-region and populations</h1>
+    <script>
+        // create a xhr object
+        const xhr = new XMLHttpRequest();
+
+        // open the http request
+        xhr.open('GET','https://restcountries.com/v3.1/all');
+
+        // handle the response
+        xhr.onload = function(){
+        
+            // xhr.response => JSON String => array of objects
+            let data = JSON.parse(xhr.response);
+             for(e of data)
+            {
+                console.log(e.name.common,e.region,e.subregion,e.population)
+            }
+
+            
+            // console.log((data.map((country)=>country.name.common,country.region,country.subregion,country.population).join(' ')) )
+
+
+        }
+
+        // make the request
+        xhr.send();
+
+     </script>
+</body>
+</html>
